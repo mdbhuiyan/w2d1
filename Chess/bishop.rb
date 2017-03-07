@@ -4,10 +4,14 @@ require_relative 'SlidingPiece.rb'
 class Bishop < Piece
   include SlidingPiece
 
-  def initialize(color)
-    @name = ' ♝ '
-    @color = color
-    # @board = board
+  # def initialize(color)
+  #   @name = ' ♝ '
+  #   @color = color
+  #   # @board = board
+  # end
+
+  def symbol
+    ' ♝ '
   end
 
   def move_dirs

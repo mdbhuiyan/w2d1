@@ -21,7 +21,7 @@ class Display
 
       # debugger
       if piece.is_a?(NullPiece)
-        return_value = piece.name.colorize(:red)
+        return_value = piece.to_s.colorize(:red)
         if [i,j] == cursor.cursor_pos
           return_value = piece.to_s.colorize(:background => :light_green)
         elsif (i + j).even?

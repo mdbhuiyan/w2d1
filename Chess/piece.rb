@@ -3,18 +3,24 @@ require 'colorize'
 
 class Piece
 
-  attr_reader :name, :color
-  # def initialize(name, color, board, position)
-  def initialize(name, color)
-    @name =  name
+  attr_reader :name, :color, :board
+
+  # def initialize(name, color)
+  def initialize(color, board, position)
     @color = color
-    # @board = board
-    # @position = board.add_piece(self, position)
+    @board = board
+    @position = board.add_piece(self, position)
   end
 
   def to_s
-    @name.colorize(color)
+    symbol.colorize(color)
   end
+
+  def symbol
+  end
+  # def to_s
+  #   @name.colorize(color)
+  # end
 
   def inspect
     @name.inspect

@@ -21,28 +21,24 @@ class Board
   end
 
   def populate_board
-  figures_classes = ["Rook", "Knight", "Bishop", "King",
-                      "Queen", "Bishop", "Knight", "Rook"]
+  figures_classes = [Rook, Knight, Bishop, King,
+                      Queen, Bishop, Knight, Rook]
+
 
     # array_figures = ["[R]", "[K]", "[B]", "[K]", "[Q]", "[B]", "[K]", "[R]"]
     @grid.each_with_index do |row, i|
 
       row.each_with_index do |piece, j|
         if i == 0
-          # debugger
-          self[[i,j]] = (eval"#{figures_classes[j]}.new(:blue)")
-          # self[[i,j]] = Piece.new("#{array_figures[j]}", :blue)
-          # self[[i,j]] = eval("#{figures_classes[j]}.new(:blue)")
+          self[[i,j]] = figures_classes[j].new(:blue, self, [i,j])
         elsif i == 1
-          self[[i,j]] = Pawn.new(:blue)
-          # puts "CLASS : #{figures_classes[0]}.class"
-          # self[[i,j]] = "#{figures_classes[0].class.new("#{array_figures[0]}", :blue)}"
+          self[[i,j]] = Pawn.new(:blue, self, [i,j])
         elsif i == 7
-          self[[i,j]] = (eval"#{figures_classes[j]}.new(:red)")
+          self[[i,j]] = figures_classes[j].new(:blue, self, [i,j])
         elsif i == 6
-          self[[i,j]] = Pawn.new(:red)
+          self[[i,j]] = Pawn.new(:red, self, [i,j])
         else i != 0 || i != 7
-          self[[i,j]] = NullPiece.new()
+          self[[i,j]] = NullPiece.new(:none, self, [i,j])
         end
       end
     end
@@ -65,7 +61,7 @@ class Board
     raise "Can't move to end_pos, it's not empty" unless self[end_pos].is_a?(NullPiece)
     start_piece = self[start_pos]
     self[end_pos] = start_piece
-    self[start_pos] = NullPiece.new
+    self[start_pos] = NullPiece.new(:none, self, start_pos)
     @grid
   end
 

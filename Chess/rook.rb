@@ -4,9 +4,14 @@ require_relative 'SlidingPiece.rb'
 class Rook < Piece
   include SlidingPiece
 
-  def initialize(color)
-    @name = ' ♜ '
-    @color = color
+  # def initialize(color)
+  #   @name = ' ♜ '
+  #   @color = color
+  # end
+
+  def symbol
+    ' ♜ '
   end
+
 
 end
