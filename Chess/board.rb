@@ -22,9 +22,9 @@ class Board
 
   def populate_board
   figures_classes = ["Rook", "Knight", "Bishop", "King",
-                    "Queen", "Bishop", "Knight", "Rook"]
+                      "Queen", "Bishop", "Knight", "Rook"]
 
-    array_figures = ["[R]", "[K]", "[B]", "[K]", "[Q]", "[B]", "[K]", "[R]"]
+    # array_figures = ["[R]", "[K]", "[B]", "[K]", "[Q]", "[B]", "[K]", "[R]"]
     @grid.each_with_index do |row, i|
 
       row.each_with_index do |piece, j|
@@ -38,9 +38,9 @@ class Board
           # puts "CLASS : #{figures_classes[0]}.class"
           # self[[i,j]] = "#{figures_classes[0].class.new("#{array_figures[0]}", :blue)}"
         elsif i == 7
-          self[[i,j]] = (eval"#{figures_classes[j]}.new(:black)")
+          self[[i,j]] = (eval"#{figures_classes[j]}.new(:red)")
         elsif i == 6
-          self[[i,j]] = Pawn.new(:black)
+          self[[i,j]] = Pawn.new(:red)
         else i != 0 || i != 7
           self[[i,j]] = NullPiece.new()
         end

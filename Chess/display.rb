@@ -23,14 +23,22 @@ class Display
       if piece.is_a?(NullPiece)
         return_value = piece.name.colorize(:red)
         if [i,j] == cursor.cursor_pos
-          return_value = piece.name.colorize(:background => :light_green)
+          return_value = piece.to_s.colorize(:background => :light_green)
+        elsif (i + j).even?
+          return_value = piece.to_s.colorize(:background => :yellow)
+        else
+          return_value = piece.to_s.colorize(:background => :white)
         end
         return_value
       else
         return_value = piece.to_s #.name.colorize(:black)
         # debugger
         if [i,j] == cursor.cursor_pos
-          return_value = piece.name.colorize(:background => :light_green)
+          return_value = piece.to_s.colorize(:background => :light_green)
+        elsif (i + j).even?
+          return_value = piece.to_s.colorize(:background => :yellow)
+        else
+          return_value = piece.to_s.colorize(:background => :white)
         end
         return_value
       end
@@ -41,13 +49,13 @@ class Display
 
   def render
     system("clear")
-    puts "START!"
-    p cursor.cursor_pos
+    # puts "START!"
+    # p cursor.cursor_pos
 
-    display_grid.each do |row|
-      # debugger
-      puts row.join
-    end
+    # display_grid.each do |row|
+    #   # debugger
+    #   puts row.join
+    # end
 
 
     start_pos = nil

@@ -7,6 +7,6 @@ class NullPiece < Piece
     # @name = "[ ]"
     # @color = :red
 
-    super("[ ]", :red)
+    super("   ", :red)
   end
 end
