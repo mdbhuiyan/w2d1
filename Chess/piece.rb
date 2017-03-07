@@ -1,18 +1,27 @@
+require_relative 'board.rb'
+require 'colorize'
+
 class Piece
 
-  attr_reader :name
-  def initialize(name)
-    @name = name
+  attr_reader :name, :color
+  # def initialize(name, color, board, position)
+  def initialize(name, color)
+    @name =  name
+    @color = color
+    # @board = board
+    # @position = board.add_piece(self, position)
+  end
+
+  def to_s
+    @name.colorize(color)
   end
 
   def inspect
     @name.inspect
   end
-end
 
-class NullPiece < Piece
+  def moves
 
-  def initialize
-    super(nil)
   end
+
 end
